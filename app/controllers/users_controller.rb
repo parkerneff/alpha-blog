@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user
+      @user.destroy
       flash[:danger] = "User #{@user.username} and all the users articles have been deleted"
       redirect_to users_path
     else
