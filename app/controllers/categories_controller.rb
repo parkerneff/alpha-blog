@@ -15,6 +15,22 @@ class CategoriesController < ApplicationController
 
   end
 
+  def edit
+    @category = Category.find(params[:id])
+
+
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+      flash[:success] = "Category was updated"
+      redirect_to category_path(@category)
+    else
+    end
+
+  end
+
   def index
     @categories = Category.paginate(page: params[:page], per_page: 5)
 
